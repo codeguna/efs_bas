@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Outbox;
 use File;
+use DataTables;
 use Illuminate\Http\Request;
 
 class OutboxController extends Controller
@@ -73,5 +74,9 @@ class OutboxController extends Controller
         
         
         return redirect('/outbox/trash');
+    }
+
+    public function json(){
+        return Datatables::of(Outbox::all())->make(true);
     }
 }

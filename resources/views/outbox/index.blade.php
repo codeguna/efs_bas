@@ -4,6 +4,9 @@
 <title>EFS BAS | List Outbox</title>
 
 <link href="{{ asset('/css/bootstrap-datepicker.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <script src="{{ asset('/js/jquery.js') }}"></script>
 <script src="{{ asset('/js/bootstrap-datepicker.js') }}"></script>
 <style>
@@ -13,6 +16,12 @@
 }
 </style>
 @section('content')
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+
 <div class="col-12 mt-5">
   <div class="card">
       <div class="card-body">
@@ -48,7 +57,4 @@
                     @endforeach
                 </tbody>
             </table>
-          </div>
-      </div>
-  </div>
 @endsection
