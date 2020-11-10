@@ -7,11 +7,12 @@ use App\Outbox;
 use File;
 use DataTables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OutboxController extends Controller
 {
     public function index(){
-        $outbox = Outbox::get();
+        $outbox = DB::table('outbox')->paginate(10);
         return view('outbox.index',['outbox' => $outbox]);
     }
 
@@ -30,7 +31,7 @@ class OutboxController extends Controller
         $nama_file = time()."_".$file->getClientOriginalName();
             
             // isi dengan nama folder tempat file upload
-            $tujuan_upload = 'data_file';
+        $tujuan_upload = 'data_file';
 		$file->move($tujuan_upload,$nama_file);
  
 		Outbox::create([
@@ -42,7 +43,7 @@ class OutboxController extends Controller
             'created_by' => $request->created_by,
 		]);
  
-		return redirect()->back();
+		return redirect('/outbox/list');
     }
     
     public function delete($id){
@@ -68,15 +69,50 @@ class OutboxController extends Controller
     }
 
     public function delete_permanent($id)
-    {
+    {        
         $outbox = Outbox::onlyTrashed()->where('id',$id);
-        $outbox->forceDelete();
-        
+        $outbox->forceDelete();        
         
         return redirect('/outbox/trash');
+        $outbox = Outbox::where('id',$id)->first();
+        File::delete('data_file/'.$outbox->file);
+    }
+
+    public function edit($id){
+        $outbox = Outbox::find($id);
+        return view('outbox.edit',['outbox'=>$outbox]);
+    }
+
+    public function update($id, Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+            'title' => 'required',
+        ]);
+
+        // menyimpan data file yang diupload ke variabel $files
+        $file = $request->file('file');
+        $nama_file = time()."_".$file->getClientOriginalName();
+            
+            // isi dengan nama folder tempat file upload
+        $tujuan_upload = 'data_file';
+		$file->move($tujuan_upload,$nama_file);
+ 
+        $outbox = Outbox::find($id);
+            $outbox->letter_number = $request->letter_number;
+            $outbox->date = $request->date;
+            $outbox->from = $request->from;
+            $outbox->title = $request->title;
+            $outbox->file = $nama_file;
+            $outbox->save();		
+		return redirect('/outbox/list');
     }
 
     public function json(){
         return Datatables::of(Outbox::all())->make(true);
+    }
+
+    public function jsonIndex(){
+        return view('outbox.indexJson');
     }
 }

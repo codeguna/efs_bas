@@ -9,24 +9,27 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <script src="{{ asset('/js/jquery.js') }}"></script>
 <script src="{{ asset('/js/bootstrap-datepicker.js') }}"></script>
-<style>
-    hr.style5 {
-	background-color: #fff;
-	border-top: 2px dashed #8c8b8b;
-}
-</style>
+
 @section('content')
 <script>
 $(document).ready( function () {
     $('#myTable').DataTable();
 } );
 </script>
-
+<style>
+    .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
 <div class="col-12 mt-5">
   <div class="card">
       <div class="card-body">
-          <div class="table-responsive-lg">
-            <h4 class="my-5">List Surat Keluar</h4>
+          <img height="50px" width="150px" src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Collaboration_re_vyau.svg" class="center">          
+        <h3 class="my-5">List Surat Keluar<br/><a title="Input Baru" href="{{ url('/outbox/create') }}" class="btn btn-success"><i class="ti-plus"></i></a></h4>
+        <div class="table-responsive-lg">
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -37,7 +40,7 @@ $(document).ready( function () {
                           <th>Judul</th>
                           <th>File</th>
                           <th>Created By</th>
-                        <th width="1%">OPSI</th>
+                        <th style="text-align: center" colspan="2" width="1%">OPSI</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,9 +55,12 @@ $(document).ready( function () {
                           <td>{{ $o->title }}</td>
                         <td><a href="{{ url('/data_file/'.$o->file) }}" target="_blank"><img width="150px" src="{{ url('/data_file/'.$o->file) }}"></a></td>  
                         <td>{{ $o->created_by }}</td>                    
-                        <td><a class="btn btn-danger" href="{{ url('/outbox/delete') }}/{{ $o->id }}" title="Hapus Data ?">HAPUS</a></td>
+                        <td><a class="btn btn-warning" href="{{ url('/outbox/edit') }}/{{ $o->id }}" title="Update Data ?"><i class="ti-pencil-alt"></i></a></td>
+                        <td><a class="btn btn-danger" href="{{ url('/outbox/delete') }}/{{ $o->id }}" title="Hapus Data ?"><i class="ti-trash"></a></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            {{ $outbox->links("pagination::bootstrap-4") }}
+            
 @endsection
