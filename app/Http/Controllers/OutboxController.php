@@ -45,6 +45,26 @@ class OutboxController extends Controller
  
 		return redirect('/outbox/list');
     }
+
+    public function search(Request $request)
+    {
+        $cari = $request->cari;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		/* $outbox = DB::table('outbox')
+		->where('title','like',"%".$cari."%")
+        ->paginate(); */
+        
+        $outbox = DB::table('outbox')
+                    ->where('title', 'like',"%".$cari."%")
+                    ->orWhere('from', 'like',"%".$cari."%")
+                    ->orWhere('letter_number', 'like',"%".$cari."%")
+                    ->orWhere('date', 'like',"%".$cari."%")
+                    ->paginate();
+ 
+    		// mengirim data pegawai ke view index
+		return view('outbox.index',['outbox' => $outbox]);
+    }
     
     public function delete($id){
         $outbox = Outbox::where('id',$id)->first();
@@ -114,5 +134,27 @@ class OutboxController extends Controller
 
     public function jsonIndex(){
         return view('outbox.indexJson');
+    }
+
+    public function report(){
+        return view('outbox.report');
+    }
+
+    public function proceedReport(Request $request)
+    {
+        $endDate = $request->endDate;
+        $startDate = $request->startDate;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		/* $outbox = DB::table('outbox')
+		->where('title','like',"%".$cari."%")
+        ->paginate(); */
+        
+        $outbox = DB::table('outbox')
+                    ->whereBetween('date', [$startDate, $endDate])
+                    ->paginate(10);
+ 
+    		// mengirim data pegawai ke view index
+		return view('outbox.v_report',['outbox' => $outbox]);
     }
 }

@@ -25,39 +25,29 @@
       <div class="card-body">
 {{--           <img height="50px" width="150px" src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Collaboration_re_vyau.svg" class="center">          
  --}}        
-    <h3 class="my-5">List Surat Keluar<br/><a title="Input Baru" href="{{ url('/outbox/create') }}" class="btn btn-success"><i class="ti-plus"></i></a></h4>
-    <h5>Cari Data Surat :</h5>
-	    <form action="{{ url('/outbox/search') }}" method="GET">
-		<input type="text" class="form-control" name="cari" placeholder=". . ." value="{{ old('cari') }}">
-	    </form>
+    <h3 class="my-5">List Surat Keluar</h4>    
         <div class="table-responsive-lg">
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>Nomor Surat</th>
                           <th>Tanggal Surat</th>
                           <th>Surat Dari</th>
                           <th>Judul</th>
                           <th>File</th>
                           <th>Created By</th>
-                        <th style="text-align: center" colspan="2" width="1%">OPSI</th>
                     </tr>
                 </thead>
                 <tbody>
                    
-                    @foreach($outbox as $index =>$o)    
-                                  
-                    <tr>
-                        <td>{{ $index+1 }}</td>
+                    @foreach($outbox as $o)                                  
+                    <tr>                        
                         <td>{{ $o->letter_number }}</td>
                           <td>{{ $o->date }}</td>
                           <td>{{ $o->from }}</td>
                           <td>{{ $o->title }}</td>
                         <td><a href="{{ url('/data_file/'.$o->file) }}" target="_blank"><img width="150px" src="{{ url('/data_file/'.$o->file) }}"></a></td>  
                         <td>{{ $o->created_by }}</td>                    
-                        <td><a class="btn btn-warning" href="{{ url('/outbox/edit') }}/{{ $o->id }}" title="Update Data ?"><i class="ti-pencil-alt"></i></a></td>
-                        <td><a class="btn btn-danger" href="{{ url('/outbox/delete') }}/{{ $o->id }}" title="Hapus Data ?"><i class="ti-trash"></a></td>
                     </tr>
                     @endforeach
                 </tbody>

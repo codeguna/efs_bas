@@ -35,6 +35,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/outbox/delete_permanent/{id}','OutboxController@delete_permanent');
    /*  Route::get('/outbox/json','OutboxController@json');
     Route::get('/outbox/jsonIndex','OutboxController@jsonIndex'); */
+    Route::get('/outbox/search','OutboxController@search');
+    Route::get('/outbox/report','OutboxController@report');
+    Route::get('/outbox/proceedReport','OutboxController@proceedReport');
 
 
     Route::get('/upload', 'UploadController@upload');
