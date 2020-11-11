@@ -25,7 +25,12 @@
       <div class="card-body">
 {{--           <img height="50px" width="150px" src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Collaboration_re_vyau.svg" class="center">          
  --}}        
-    <h3 class="my-5">List Surat Keluar</h4>    
+    <h3 class="my-5">List Surat Keluar</h4> 
+        <form action="{{ url('/outbox/printReport') }}"  method="GET">
+            <input type="hidden" value="{{ $startDate }}" name="startDate">
+            <input type="hidden" value="{{ $endDate }}" name="endDate">
+            <input type="submit" value="Print" class="btn btn-warning">
+        </form> 
         <div class="table-responsive-lg">
             <table class="table table-bordered table-striped">
                 <thead>

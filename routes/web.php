@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/outbox/search','OutboxController@search');
     Route::get('/outbox/report','OutboxController@report');
     Route::get('/outbox/proceedReport','OutboxController@proceedReport');
-
+    Route::get('/outbox/printReport','OutboxController@printReport');
 
     Route::get('/upload', 'UploadController@upload');
     Route::post('/upload/proses', 'UploadController@proses_upload');

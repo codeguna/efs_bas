@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Outbox;
 use File;
 use DataTables;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -155,6 +156,26 @@ class OutboxController extends Controller
                     ->paginate(10);
  
     		// mengirim data pegawai ke view index
-		return view('outbox.v_report',['outbox' => $outbox]);
+        //return view('outbox.v_report',['outbox' => $outbox]);
+        return view('outbox.v_report')->with(compact('outbox','startDate','endDate'));
+    }
+
+    public function printReport(Request $request)
+    {
+        $endDate = $request->endDate;
+        $startDate = $request->startDate;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		/* $outbox = DB::table('outbox')
+		->where('title','like',"%".$cari."%")
+        ->paginate(); */
+        
+        $outbox = DB::table('outbox')
+                    ->whereBetween('date', [$startDate, $endDate])
+                    ->get();
+                   // $outbox = DB::table('outbox')->where('date', '=', '2020-11-11')->get();
+            // mengirim data pegawai ke view index           
+            $pdf = PDF::loadview('outbox.printReport',['outbox' => $outbox]);
+		    return $pdf->stream();
     }
 }

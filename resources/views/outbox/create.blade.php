@@ -23,7 +23,7 @@
 
                 <div class="input-container">
                     <label class="col-form-label">Nomor Surat Keluar</label>
-                    <input type="text" class="form-control" name="letter_number" required>
+                    <input type="text" class="form-control" name="letter_number" required autofocus>
                 </div><br/>
                 @if($errors->has('letter_number'))
                         <div class="text-danger">

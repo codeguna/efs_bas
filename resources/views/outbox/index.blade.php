@@ -45,11 +45,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                   
+                    @php $i=1 @endphp
                     @foreach($outbox as $index =>$o)    
                                   
                     <tr>
-                        <td>{{ $index+1 }}</td>
+                        <td>{{ $i++ }}</td>
                         <td>{{ $o->letter_number }}</td>
                           <td>{{ $o->date }}</td>
                           <td>{{ $o->from }}</td>

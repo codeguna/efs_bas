@@ -50,9 +50,10 @@
                     @endif
                     <br/>
                     <input type="submit" value="Cari" class="btn btn-success">
-                    <a href="{{ url('/outbox/print') }}" class="btn btn-warning">Print</a>
                 </div>
-            </form>           
+                </form> 
+                </div>
       </div>
   </div>
+</div>
 @endsection
