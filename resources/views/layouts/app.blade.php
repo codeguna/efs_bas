@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     @yield('title')
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('/public/theme/images/icon/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('/public/theme/images/icon/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('/public/theme/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/public/theme/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/public/theme/css/themify-icons.css') }}">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2020 at 05:29 AM
+-- Generation Time: Nov 11, 2020 at 04:50 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -93,9 +93,12 @@ CREATE TABLE `outbox` (
 --
 
 INSERT INTO `outbox` (`id`, `letter_number`, `date`, `from`, `title`, `deleted_at`, `file`, `created_by`, `created_at`, `updated_at`) VALUES
-(8, '06\\BAS\\EXT\\2K20', '2020-11-04', 'ALFA', 'COKI COKI MAU GA GES ?', NULL, '1604892294_Jaket-AAI-tile.jpg', 'Gunadhi Pratama', '2020-11-08 20:24:54', '2020-11-08 20:27:01'),
-(9, '07\\BAS\\EXT\\2K20', '2020-11-20', 'POS', 'BAYAR ONGKIR BOS', '2020-11-08 20:59:15', '1604894294_Screenshot_2018-10-13 39372982_466280337204432_6662153124079206400_n jpg (JPEG Image, 1080 × 1080 pixels) - Scaled (85%).png', 'Gunadhi Pratama', '2020-11-08 20:58:14', '2020-11-08 20:59:15'),
-(10, '08\\BAS\\EXT\\2K20', '2020-11-18', 'JNE', 'ONGKIR BAYAR BOS', '2020-11-08 21:09:42', '1604894348_DWD_a4HVQAAdw69.jpg', 'Gunadhi Pratama', '2020-11-08 20:59:08', '2020-11-08 21:09:42');
+(11, '01\\BAS\\EXT\\2020', '2020-11-01', 'HIPMI', 'Jualan Yu GES', NULL, '1604979642_759.TYD 2435.JPG', 'Gunadhi Pratama', '2020-11-09 20:40:42', '2020-11-09 20:40:42'),
+(12, '02\\BAS\\EXT\\2020', '2020-11-14', 'INDOMERIT', 'BAKAR PRODUK PRANCIS YU GES', NULL, '1604979748_760.TYD 2434.JPG', 'Gunadhi Pratama', '2020-11-09 20:42:28', '2020-11-09 20:42:28'),
+(13, '03\\BAS\\EXT\\2020', '2020-11-14', 'ALFA', 'MICIN GES', NULL, '1604979820_761.TKN 2439.JPG', 'Gunadhi Pratama', '2020-11-09 20:43:40', '2020-11-09 20:43:40'),
+(14, '03\\BAS\\EXT\\2020', '2020-11-11', 'CAREFOUR', 'DAFTAR BANK MEGA GES', NULL, '1604979859_761.TKN 2439.JPG', 'Gunadhi Pratama', '2020-11-09 20:44:19', '2020-11-09 20:44:19'),
+(15, '05\\BAS\\EXT\\2020', '2020-11-25', 'ALFAMIDI', 'JAJAN SNACK KABUPATEN GES', NULL, '1604979904_765.TYD 2367.JPG', 'Gunadhi Pratama', '2020-11-09 20:45:04', '2020-11-09 20:45:04'),
+(16, '06\\BAS\\EXT\\2020', '2020-11-11', 'VITASARI', 'JAJAN MOAL GES ?', NULL, '1604979934_764.TAW 2315 Tan.jpg', 'Gunadhi Pratama', '2020-11-09 20:45:34', '2020-11-09 20:45:34');
 
 -- --------------------------------------------------------
 
@@ -188,7 +191,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `outbox`
 --
 ALTER TABLE `outbox`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
