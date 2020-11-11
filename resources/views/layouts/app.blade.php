@@ -62,9 +62,9 @@
                                     </span></a>
                                 <ul class="collapse">
                                     <li><a href="{{ url('/outbox/create') }}"><i class="ti-pencil"></i><span>Input Surat Keluar</span></a></li>   
-                                    <li><a href="{{ url('/outbox/list') }}"><i class="ti-menu-alt"></i><span>Daftar Surat Keluar</span></a></li>                                   
-                                    <li><a href="{{ url('/outbox/trash') }}"><i class="ti-trash"></i><span>Trash</span></a></li> 
+                                    <li><a href="{{ url('/outbox/list') }}"><i class="ti-menu-alt"></i><span>Daftar Surat Keluar</span></a></li> 
                                     <li><a href="{{ url('/outbox/report') }}"><i class="ti-folder"></i><span>Report Surat Keluar</span></a></li> 
+                                    <li><a href="{{ url('/outbox/trash') }}"><i class="ti-trash"></i><span>Trash</span></a></li> 
                                 </ul>
                             </li>
                         </ul>
