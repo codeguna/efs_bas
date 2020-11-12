@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\DB;
 class OutboxController extends Controller
 {
     public function index(){
-        $outbox = DB::table('outbox')->paginate(10);
+        
+        $outbox = Outbox::paginate(10);
         return view('outbox.index',['outbox' => $outbox]);
     }
 
@@ -32,7 +33,7 @@ class OutboxController extends Controller
         $nama_file = time()."_".$file->getClientOriginalName();
             
             // isi dengan nama folder tempat file upload
-        $tujuan_upload = 'data_file';
+        $tujuan_upload = 'data_file/outbox';
 		$file->move($tujuan_upload,$nama_file);
  
 		Outbox::create([
@@ -68,12 +69,16 @@ class OutboxController extends Controller
     }
     
     public function delete($id){
-        $outbox = Outbox::where('id',$id)->first();
+        /* $outbox = Outbox::where('id',$id)->first();
         //File::delete('data_file/'.$outbox->file);
 
         Outbox::where('id',$id)->delete();
 
-        return redirect()->back();
+        return redirect()->back(); */
+        $outbox = Outbox::find($id);
+    	$outbox->delete();
+ 
+    	return redirect('/outbox/list');
     }
 
     public function trash()
@@ -96,7 +101,7 @@ class OutboxController extends Controller
         
         return redirect('/outbox/trash');
         $outbox = Outbox::where('id',$id)->first();
-        File::delete('data_file/'.$outbox->file);
+        File::delete('data_file/outbox/'.$outbox->file);
     }
 
     public function edit($id){
@@ -116,7 +121,7 @@ class OutboxController extends Controller
         $nama_file = time()."_".$file->getClientOriginalName();
             
             // isi dengan nama folder tempat file upload
-        $tujuan_upload = 'data_file';
+        $tujuan_upload = 'data_file/outbox';
 		$file->move($tujuan_upload,$nama_file);
  
         $outbox = Outbox::find($id);

@@ -23,6 +23,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inbox/list','InboxController@index');
     Route::get('/inbox/create','InboxController@create');
     Route::post('/inbox/store', 'InboxController@store');
+    Route::get('/inbox/delete/{id}','InboxController@delete');
+    Route::get('/inbox/restore/{id}','InboxController@restore');
+    Route::get('/inbox/delete_permanent/{id}','InboxController@delete_permanent');
+    Route::get('/inbox/trash', 'InboxController@trash');
+    Route::get('/inbox/edit/{id}','InboxController@edit');
 
     Route::get('/outbox/create','OutboxController@create');
     Route::get('/outbox/list','OutboxController@index');

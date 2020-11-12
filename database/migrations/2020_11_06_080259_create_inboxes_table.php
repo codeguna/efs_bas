@@ -20,6 +20,8 @@ class CreateInboxesTable extends Migration
             $table->string('from');
             $table->string('title');
             $table->string('file');
+            $table->string('created_by');
+            $table->timestamps('deleted_at');
             $table->timestamps();
         });
     }

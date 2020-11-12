@@ -1,7 +1,7 @@
 
 @extends('layouts.app') 
 @section('title') 
-<title>EFS BAS | List Outbox Trash</title> 
+<title>EFS BAS | List Inbox Trash</title> 
 <link href="{{ asset('/css/bootstrap-datepicker.css') }}" rel="stylesheet">
 <script src="{{ asset('/js/jquery.js') }}"></script>
 <script src="{{ asset('/js/bootstrap-datepicker.js') }}"></script>
@@ -23,7 +23,7 @@
                 @endforeach
             </div>
             @endif
-            <h4 class="my-5">List Sampah Surat Keluar</h4>
+            <h4 class="my-5">List Sampah Surat Masuk</h4>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -38,17 +38,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($outbox as $index =>$o)
+                    @foreach($inbox as $index =>$i)
                     <tr>
                         <td>{{ $index+1 }}</td>
-                        <td>{{ $o->letter_number }}</td>
-                          <td>{{ $o->date }}</td>
-                          <td>{{ $o->from }}</td>
-                          <td>{{ $o->title }}</td>
-                        <td><img width="100px" src="{{ url('/data_file/outbox/'.$o->file) }}"></td>   
-                        <td>{{ $o->created_by }}</td>                   
-                        <td><a href="{{ url('/outbox/restore') }}/{{ $o->id }}" class="btn btn-success btn-sm" title="Restore Data"><i class="ti-import"></i></a></td>
-                            <td><a href="{{ url('/outbox/delete_permanent') }}/{{ $o->id }}" class="btn btn-danger btn-sm" title="Hapus Data Permanen"><i class="ti-trash"></i></a></td>
+                        <td>{{ $i->letter_number }}</td>
+                          <td>{{ $i->date }}</td>
+                          <td>{{ $i->from }}</td>
+                          <td>{{ $i->title }}</td>
+                        <td><img width="100px" src="{{ url('/data_file/inbox/'.$i->file) }}"></td>   
+                        <td>{{ $i->created_by }}</td>                   
+                        <td><a href="{{ url('/inbox/restore') }}/{{ $i->id }}" class="btn btn-success btn-sm" title="Restore Data"><i class="ti-import"></i></a></td>
+                            <td><a href="{{ url('/inbox/delete_permanent') }}/{{ $i->id }}" class="btn btn-danger btn-sm" title="Hapus Data Permanen"><i class="ti-trash"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>

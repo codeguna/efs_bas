@@ -1,7 +1,7 @@
 
 @extends('layouts.app') 
 @section('title') 
-<title>EFS BAS | Create New Outbox</title>
+<title>EFS BAS | Edit Outbox</title>
 
 <link href="{{ asset('/css/bootstrap-datepicker.css') }}" rel="stylesheet">
 <script src="{{ asset('/js/jquery.js') }}"></script>
@@ -66,9 +66,9 @@
                     @endif
                 <div class="form-group">
                     <label class="col-form-label">Upload Scan Surat</label>
-                    <input class="form-control" name="file" type="file" value="{{ url('/data_file/'.$outbox->file) }}" required>
+                    <input class="form-control" name="file" type="file" value="{{ url('/data_file/outbox/'.$outbox->file) }}" required>
                     <div class="text-danger">{{ $outbox->file }}
-                        <br/><img width="100px" src="{{ url('/data_file/'.$outbox->file) }}">
+                        <br/><img width="100px" src="{{ url('/data_file/outbox/'.$outbox->file) }}">
                     </div>
                 </div> 
                     @if($errors->has('file'))

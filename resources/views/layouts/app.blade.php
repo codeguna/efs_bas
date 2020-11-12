@@ -53,7 +53,8 @@
                                 <ul class="collapse">
                                     <li><a href="{{ url('/inbox/create') }}"><i class="ti-pencil"></i><span>Input Surat Masuk</span></a></li>   
                                     <li><a href="{{ url('/inbox/list') }}"><i class="ti-menu-alt"></i><span>Daftar Surat Masuk</span></a></li>                                   
-                                    <li><a href="index.html"><i class="ti-trash"></i><span>Trash</span></a></li>  
+                                    <li><a href="{{ url('/inbox/report') }}"><i class="ti-folder"></i><span>Report Surat Masuk</span></a></li> 
+                                    <li><a href="{{ url('/inbox/trash') }}"><i class="ti-trash"></i><span>Trash</span></a></li>  
                                 </ul>
                             </li>
                             <li>
