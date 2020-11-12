@@ -84,4 +84,66 @@ class InboxController extends Controller
         $inbox = Inbox::where('id',$id)->first();
         File::delete('data_file/inbox/'.$inbox->file);
     }
+
+    public function report(){
+        return view('inbox.report');
+    }
+
+    public function proceedReport(Request $request)
+    {
+        $endDate = $request->endDate;
+        $startDate = $request->startDate;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		/* $outbox = DB::table('outbox')
+		->where('title','like',"%".$cari."%")
+        ->paginate(); */
+        
+        $inbox = DB::table('inbox')
+                    ->whereBetween('date', [$startDate, $endDate])
+                    ->paginate(10);
+ 
+    		// mengirim data pegawai ke view index
+        //return view('outbox.v_report',['outbox' => $outbox]);
+        return view('inbox.v_report')->with(compact('inbox','startDate','endDate'));
+    }
+
+    public function printReport(Request $request)
+    {
+        $endDate = $request->endDate;
+        $startDate = $request->startDate;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		/* $outbox = DB::table('outbox')
+		->where('title','like',"%".$cari."%")
+        ->paginate(); */
+        
+        $inbox = DB::table('inbox')
+                    ->whereBetween('date', [$startDate, $endDate])
+                    ->get();
+                   // $outbox = DB::table('outbox')->where('date', '=', '2020-11-11')->get();
+            // mengirim data pegawai ke view index           
+            $pdf = PDF::loadview('inbox.printReport',['inbox' => $inbox]);
+		    return $pdf->stream();
+    }
+
+    public function search(Request $request)
+    {
+        $cari = $request->cari;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		/* $outbox = DB::table('outbox')
+		->where('title','like',"%".$cari."%")
+        ->paginate(); */
+        
+        $inbox = DB::table('inbox')
+                    ->where('title', 'like',"%".$cari."%")
+                    ->orWhere('from', 'like',"%".$cari."%")
+                    ->orWhere('letter_number', 'like',"%".$cari."%")
+                    ->orWhere('date', 'like',"%".$cari."%")
+                    ->paginate();
+ 
+    		// mengirim data pegawai ke view index
+		return view('inbox.index',['inbox' => $inbox]);
+    }
 }

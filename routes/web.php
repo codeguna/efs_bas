@@ -28,6 +28,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inbox/delete_permanent/{id}','InboxController@delete_permanent');
     Route::get('/inbox/trash', 'InboxController@trash');
     Route::get('/inbox/edit/{id}','InboxController@edit');
+    Route::get('/inbox/report','InboxController@report');
+    Route::get('/inbox/search','InboxController@search');
+    Route::get('/inbox/proceedReport','InboxController@proceedReport');
+    Route::get('/inbox/printReport','InboxController@printReport');
 
     Route::get('/outbox/create','OutboxController@create');
     Route::get('/outbox/list','OutboxController@index');

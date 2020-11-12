@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2020 at 04:50 AM
+-- Generation Time: Nov 12, 2020 at 08:44 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -35,6 +35,8 @@ CREATE TABLE `inbox` (
   `date` date NOT NULL,
   `from` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_by` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `file` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -44,8 +46,10 @@ CREATE TABLE `inbox` (
 -- Dumping data for table `inbox`
 --
 
-INSERT INTO `inbox` (`id`, `letter_number`, `date`, `from`, `title`, `file`, `created_at`, `updated_at`) VALUES
-(1, '123', '2020-11-10', 'ASD', 'ASD', 'ASD', '2020-11-07 03:29:32', '2020-11-07 03:29:32');
+INSERT INTO `inbox` (`id`, `letter_number`, `date`, `from`, `title`, `deleted_at`, `created_by`, `file`, `created_at`, `updated_at`) VALUES
+(8, '46346346', '2020-11-25', 'fafasf', 'fasfasf', '2020-11-11 23:55:54', 'Admin', '1605151837_382.GRW 9170.jpg', '2020-11-11 20:30:37', '2020-11-11 23:55:54'),
+(9, '05\\BAS\\INT\\2K20', '2020-11-01', 'UNISBA', 'uWu', NULL, 'Admin', '1605161907_67slide.jpg', '2020-11-11 23:18:27', '2020-11-11 23:18:27'),
+(10, '03\\BAS\\INT\\2020', '2020-11-07', 'TELKOM', 'AYO NIKMATI KONTENT GRATIS KAMI', NULL, 'Admin', '1605162706_Beranda.PNG', '2020-11-11 23:31:46', '2020-11-11 23:31:46');
 
 -- --------------------------------------------------------
 
@@ -97,8 +101,9 @@ INSERT INTO `outbox` (`id`, `letter_number`, `date`, `from`, `title`, `deleted_a
 (12, '02\\BAS\\EXT\\2020', '2020-11-14', 'INDOMERIT', 'BAKAR PRODUK PRANCIS YU GES', NULL, '1604979748_760.TYD 2434.JPG', 'Gunadhi Pratama', '2020-11-09 20:42:28', '2020-11-09 20:42:28'),
 (13, '03\\BAS\\EXT\\2020', '2020-11-14', 'ALFA', 'MICIN GES', NULL, '1604979820_761.TKN 2439.JPG', 'Gunadhi Pratama', '2020-11-09 20:43:40', '2020-11-09 20:43:40'),
 (14, '03\\BAS\\EXT\\2020', '2020-11-11', 'CAREFOUR', 'DAFTAR BANK MEGA GES', NULL, '1604979859_761.TKN 2439.JPG', 'Gunadhi Pratama', '2020-11-09 20:44:19', '2020-11-09 20:44:19'),
-(15, '05\\BAS\\EXT\\2020', '2020-11-25', 'ALFAMIDI', 'JAJAN SNACK KABUPATEN GES', NULL, '1604979904_765.TYD 2367.JPG', 'Gunadhi Pratama', '2020-11-09 20:45:04', '2020-11-09 20:45:04'),
-(16, '06\\BAS\\EXT\\2020', '2020-11-11', 'VITASARI', 'JAJAN MOAL GES ?', NULL, '1604979934_764.TAW 2315 Tan.jpg', 'Gunadhi Pratama', '2020-11-09 20:45:34', '2020-11-09 20:45:34');
+(15, '05\\BAS\\EXT\\2020', '2020-11-25', 'ALFAMIDIA', 'JAJAN SNACK KABUPATEN GES', NULL, '1605151625_390.GRW  9171.jpg', 'Gunadhi Pratama', '2020-11-09 20:45:04', '2020-11-11 20:27:05'),
+(18, 'asd', '2020-11-19', 'asd', 'asdasd', '2020-11-11 20:26:48', '1605150004_380.GLA 9168.jpg', 'Gunadhi Pratama', '2020-11-11 20:00:04', '2020-11-11 20:26:48'),
+(19, 'dfdf', '2020-11-25', 'dfdf', 'dfdf', '2020-11-11 20:26:45', '1605150046_381.GAK 9150.jpg', 'Gunadhi Pratama', '2020-11-11 20:00:46', '2020-11-11 20:26:45');
 
 -- --------------------------------------------------------
 
@@ -133,7 +138,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Gunadhi Pratama', 'gunadhi@lpkia.ac.id', '$2y$10$phLZdBgyMlWvjp4x82PbheXtW8.CaTiBTEGanvpxI.pmwdL77vLJS', 'scRlnDZMRZPc5hIQv8tXgFP7KMmfYjc4iAJTgKtAKdREjiqMLg0ZTKhS15sR', '2020-11-05 00:38:18', '2020-11-05 00:38:18'),
+(1, 'Gunadhi Pratama', 'gunadhi@lpkia.ac.id', '$2y$10$phLZdBgyMlWvjp4x82PbheXtW8.CaTiBTEGanvpxI.pmwdL77vLJS', 'ke532ZpdfviJ6MKPCeyBLxbinuOEJ2iK5icW20FsqC7KyXPBr5B30k1Kfl02', '2020-11-05 00:38:18', '2020-11-05 00:38:18'),
 (2, 'Admin', 'pratamagunadhi@gmail.com', '$2y$10$1IKbm8Wswxmn439H2da2cO8ikH2tQLX9fVfsN42gbJy7Tj19kqWSq', 'P2p2OLnAsMviqv08bXHW7ISqusN8hDTSg5WNZB8mAn19BXAgLWYxKZ3X4qtR', '2020-11-05 19:34:40', '2020-11-05 19:55:26');
 
 --
@@ -179,7 +184,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `inbox`
 --
 ALTER TABLE `inbox`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -191,7 +196,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `outbox`
 --
 ALTER TABLE `outbox`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -1,7 +1,7 @@
 
 @extends('layouts.app') 
 @section('title') 
-<title>EFS BAS | List Outbox</title>
+<title>EFS BAS | List Inbox</title>
 
 <link href="{{ asset('/css/bootstrap-datepicker.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
@@ -26,7 +26,7 @@
 {{--           <img height="50px" width="150px" src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Collaboration_re_vyau.svg" class="center">          
  --}}        
     <h3 class="my-5">List Surat Keluar</h4> 
-        <form action="{{ url('/outbox/printReport') }}"  method="GET">
+        <form action="{{ url('/inbox/printReport') }}"  method="GET">
             <input type="hidden" value="{{ $startDate }}" name="startDate">
             <input type="hidden" value="{{ $endDate }}" name="endDate">
             <input type="submit" value="Print" class="btn btn-warning">
@@ -45,18 +45,18 @@
                 </thead>
                 <tbody>
                    
-                    @foreach($outbox as $o)                                  
+                    @foreach($inbox as $i)                                  
                     <tr>                        
-                        <td>{{ $o->letter_number }}</td>
-                          <td>{{ $o->date }}</td>
-                          <td>{{ $o->from }}</td>
-                          <td>{{ $o->title }}</td>
-                        <td><a href="{{ url('/data_file/outbox/'.$o->file) }}" target="_blank"><img width="150px" src="{{ url('/data_file/outbox/'.$o->file) }}"></a></td>  
-                        <td>{{ $o->created_by }}</td>                    
+                        <td>{{ $i->letter_number }}</td>
+                          <td>{{ $i->date }}</td>
+                          <td>{{ $i->from }}</td>
+                          <td>{{ $i->title }}</td>
+                        <td><a href="{{ url('/data_file/inbox/'.$i->file) }}" target="_blank"><img width="150px" src="{{ url('/data_file/inbox/'.$i->file) }}"></a></td>  
+                        <td>{{ $i->created_by }}</td>                    
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            {{ $outbox->links("pagination::bootstrap-4") }}
+            {{ $inbox->links("pagination::bootstrap-4") }}
             
 @endsection

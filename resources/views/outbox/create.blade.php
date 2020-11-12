@@ -75,7 +75,8 @@
                         </div>
                     @endif
                 <input type="hidden" value="{{ Auth::user()->name }}" name="created_by"> 
-                <input type="submit" value="Simpan" class="btn btn-primary">
+                <a class="btn btn-warning" href="{{ url('/outbox/list') }}"><i class="ti-arrow-left"> Kembali</i></a>
+                <button type="submit" class="btn btn-primary"><i class="ti-save"> Simpan</i></button>
             </form>
           </div>
       </div>
