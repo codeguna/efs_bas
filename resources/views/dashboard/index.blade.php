@@ -4,8 +4,7 @@
 <title>BAS | Dashboard</title> 
 @section('content')
         <div class="col-12 mt-5">          
-          <div class="card">
-            <h3>Statistik Surat Masuk & Keluar BAS</h3>
+          <div class="card">            
             <a href="{{ url('/inbox/list') }}">
             <div class="seo-fact sbg2">
               <div class="p-4 d-flex justify-content-between align-items-center">
