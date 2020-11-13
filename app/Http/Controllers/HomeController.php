@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $outbox = DB::table('outbox')
+                    ->where('deleted_at', null)
+                    ->paginate(10);
+        $inbox = DB::table('inbox')
+                    ->where('deleted_at', null)
+                    ->paginate(10);
+        return view('dashboard.index')->with(compact('outbox','inbox'));
+
     }
 }

@@ -24,6 +24,7 @@ class InboxController extends Controller
 
     public function store(Request $request){
         $this->validate($request, [
+            'letter_number' => 'required|unique:inbox,letter_number',
             'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'required',
         ]);

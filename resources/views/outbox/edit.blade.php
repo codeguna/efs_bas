@@ -22,15 +22,16 @@
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
 
-                <div class="input-container">
+                <div class="form-group">
                     <label class="col-form-label">Nomor Surat Keluar</label>
                     <input type="text" class="form-control" name="letter_number" value="{{ $outbox->letter_number }}" required>
-                </div><br/>
-                @if($errors->has('letter_number'))
-                        <div class="text-danger">
-                            Form Nomor Surat masih belum terisi
-                        </div>
-                    @endif
+                    @if($errors->has('letter_number'))
+                    <div class="text-danger">
+                        Form Nomor Surat masih belum terisi
+                    </div>
+                @endif
+                </div>
+                
                 <div class="form-group">
                     <label>Tanggal Surat Keluar</label>
                     <input class="date form-control" type="text" name="date" value="{{ $outbox->date }}" required>
@@ -49,33 +50,36 @@
                 <div class="form-group">
                     <label class="col-form-label" required>Surat Keluar Dari ?</label>
                     <input type="text" class="form-control" name="from" value="{{ $outbox->from }}" required>
-                </div>
                     @if($errors->has('from'))
-                        <div class="text-danger">
-                            Form Surat Darimana masih belum terisi
-                        </div>
-                    @endif
+                    <div class="text-danger">
+                        Form Surat Darimana masih belum terisi
+                    </div>
+                @endif
+                </div>
+                    
                 <div class="form-group">
                     <label class="col-form-label">Judul Surat Keluar</label>
                     <input type="text" class="form-control" name="title" value="{{ $outbox->title }}" required>
-                </div>
                     @if($errors->has('title'))
-                        <div class="text-danger">
-                            Form Judul Surat masih belum terisi
-                        </div>
-                    @endif
+                    <div class="text-danger">
+                        Form Judul Surat masih belum terisi
+                    </div>
+                @endif
+                </div>
+                   
                 <div class="form-group">
                     <label class="col-form-label">Upload Scan Surat</label>
                     <input class="form-control" name="file" type="file" value="{{ url('/data_file/outbox/'.$outbox->file) }}" required>
                     <div class="text-danger">{{ $outbox->file }}
                         <br/><img width="100px" src="{{ url('/data_file/outbox/'.$outbox->file) }}">
                     </div>
-                </div> 
                     @if($errors->has('file'))
-                        <div class="text-danger">
-                            Silahkan Upload File                            
-                        </div>
-                    @endif
+                    <div class="text-danger">
+                        Silahkan Upload File                            
+                    </div>
+                @endif
+                </div> 
+                   
                 <input type="hidden" value="{{ Auth::user()->name }}" name="created_by"> 
                 <a class="btn btn-warning" href="{{ url('/outbox/list') }}"><i class="ti-arrow-left"> Kembali</i></a>
                 <button type="submit" class="btn btn-primary"><i class="ti-save"> Simpan</i></button>
