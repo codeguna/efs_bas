@@ -101,8 +101,8 @@ class OutboxController extends Controller
         $outbox->forceDelete();        
         
         return redirect('/outbox/trash');
-        $outbox = Outbox::where('id',$id)->first();
-        File::delete('data_file/outbox/'.$outbox->file);
+/*         $outbox = Outbox::where('id',$id)->first();
+ */        File::delete('data_file/outbox/'.$outbox->file);
     }
 
     public function edit($id){
