@@ -1,7 +1,7 @@
 
 @extends('layouts.app') 
 @section('title') 
-<title>BAS | Dashboard</title> 
+<title>EFS BAS | Dashboard</title> 
 @section('content')
         <div class="col-12 mt-5">          
           <div class="card">            
