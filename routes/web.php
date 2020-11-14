@@ -32,7 +32,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inbox/search','InboxController@search');
     Route::get('/inbox/proceedReport','InboxController@proceedReport');
     Route::get('/inbox/printReport','InboxController@printReport');
+    Route::put('/inbox/update/{id}','InboxController@update');
 
+    Route::get('/outbox/outboxTrashSearch','OutboxController@outboxTrashSearch');
     Route::get('/outbox/create','OutboxController@create');
     Route::get('/outbox/list','OutboxController@index');
     Route::post('/outbox/store', 'OutboxController@store');

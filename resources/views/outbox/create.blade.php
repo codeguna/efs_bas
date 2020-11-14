@@ -47,7 +47,7 @@
 
                 </div> 
                 <div class="form-group">
-                    <label class="col-form-label" required>Surat Keluar Dari ?</label>
+                    <label class="col-form-label" required>Surat Keluar Untuk ?</label>
                     <input type="text" class="form-control" name="from">
                     @if($errors->has('from'))
                     <div class="text-danger">

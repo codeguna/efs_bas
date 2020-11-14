@@ -24,13 +24,17 @@
             </div>
             @endif
             <h4 class="my-5">List Sampah Surat Keluar</h4>
+            {{-- <h5>Cari Data Surat :</h5>
+	        <form action="{{ url('/outbox/outboxTrashSearch') }}" method="GET">
+		        <input type="text" class="form-control" name="cari" placeholder=". . ." value="{{ old('cari') }}">
+	        </form> --}}
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Nomor Surat</th>
                           <th>Tanggal Surat</th>
-                          <th>Surat Dari</th>
+                          <th>Surat Untuk</th>
                           <th>Judul</th>
                           <th>File</th>
                           <th>Created By</th>                          

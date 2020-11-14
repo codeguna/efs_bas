@@ -186,4 +186,22 @@ class OutboxController extends Controller
             $pdf = PDF::loadview('outbox.printReport',['outbox' => $outbox]);
 		    return $pdf->stream();
     }
+
+    public function outboxTrashSearch(Request $request)
+    {
+        $cari = $request->cari;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		/* $outbox = DB::table('outbox')
+		->where('title','like',"%".$cari."%")
+        ->paginate(); */
+        $outbox = Outbox::onlyTrashed()
+        ->where('title', 'like',"%".$cari."%")
+        ->orWhere('from', 'like',"%".$cari."%")
+        ->orWhere('letter_number', 'like',"%".$cari."%")
+        ->orWhere('date', 'like',"%".$cari."%")
+        ->paginate();
+
+		return view('outbox.trash',['outbox' => $outbox]);
+    }
 }

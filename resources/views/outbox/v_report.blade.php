@@ -37,7 +37,7 @@
                     <tr>
                         <th>Nomor Surat</th>
                           <th>Tanggal Surat</th>
-                          <th>Surat Dari</th>
+                          <th>Surat Untuk</th>
                           <th>Judul</th>
                           <th>File</th>
                           <th>Created By</th>

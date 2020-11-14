@@ -54,6 +54,31 @@ class InboxController extends Controller
         return view('inbox.edit',['inbox'=>$inbox]);
     }
 
+    public function update($id, Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+            'title' => 'required',
+        ]);
+
+        // menyimpan data file yang diupload ke variabel $files
+        $file = $request->file('file');
+        $nama_file = time()."_".$file->getClientOriginalName();
+            
+            // isi dengan nama folder tempat file upload
+        $tujuan_upload = 'data_file/inbox';
+		$file->move($tujuan_upload,$nama_file);
+ 
+        $inbox = Inbox::find($id);
+            $inbox->letter_number = $request->letter_number;
+            $inbox->date = $request->date;
+            $inbox->from = $request->from;
+            $inbox->title = $request->title;
+            $inbox->file = $nama_file;
+            $inbox->save();		
+		return redirect('/inbox/list');
+    }
+
     public function delete($id){
         $inbox = Inbox::where('id',$id)->first();
         //File::delete('data_file/'.$outbox->file);
