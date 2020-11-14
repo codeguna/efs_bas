@@ -10,6 +10,7 @@ use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class OutboxController extends Controller
 {
     public function index(){
@@ -98,11 +99,12 @@ class OutboxController extends Controller
     public function delete_permanent($id)
     {        
         $outbox = Outbox::onlyTrashed()->where('id',$id);
-        $outbox->forceDelete();        
-        
+        $outbox->forceDelete();   
+
+        /* $imgWillDelete = '/data_file/outbox/1605150046_381.GAK 9150.jpg';
+        File::delete($imgWillDelete); */
+
         return redirect('/outbox/trash');
-/*         $outbox = Outbox::where('id',$id)->first();
- */        File::delete('data_file/outbox/'.$outbox->file);
     }
 
     public function edit($id){

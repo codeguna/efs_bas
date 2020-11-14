@@ -135,7 +135,7 @@
             <!-- page title area end -->            
                 <!-- CONTENT HERE -->
                 @yield('content')                
-                <!-- CONTENT HERE -->        
+                <!-- CONTENT HERE --> 
         <footer>
             <div class="footer-area">
                 <p>© Copyright 2020. All right reserved <a href="http://www.linkedin.com/in/gunadhip/">MIS LPKIA</a>.</p>

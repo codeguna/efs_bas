@@ -4,7 +4,7 @@
 <title>EFS BAS | Dashboard</title> 
 @section('content')
         <div class="col-12 mt-5">          
-          <div class="card">            
+          <div class="card" style="background-color: transparent">            
             <a href="{{ url('/inbox/list') }}">
             <div class="seo-fact sbg2">
               <div class="p-4 d-flex justify-content-between align-items-center">
