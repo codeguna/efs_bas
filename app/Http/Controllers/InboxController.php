@@ -172,4 +172,19 @@ class InboxController extends Controller
     		// mengirim data pegawai ke view index
 		return view('inbox.index',['inbox' => $inbox]);
     }
+
+    public function inboxTrashSearch(Request $request)
+    {
+        $cari = $request->cari;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		/* $outbox = DB::table('outbox')
+		->where('title','like',"%".$cari."%")
+        ->paginate(); */
+        $inbox = Inbox::onlyTrashed()
+        ->where('title', 'like',"%".$cari."%")
+        ->paginate();
+
+		return view('inbox.trash',['inbox' => $inbox]);
+    }
 }

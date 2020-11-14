@@ -24,10 +24,10 @@
             </div>
             @endif
             <h4 class="my-5">List Sampah Surat Keluar</h4>
-            {{-- <h5>Cari Data Surat :</h5>
+            <h5>Cari Data Surat :</h5>
 	        <form action="{{ url('/outbox/outboxTrashSearch') }}" method="GET">
 		        <input type="text" class="form-control" name="cari" placeholder=". . ." value="{{ old('cari') }}">
-	        </form> --}}
+	        </form>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>

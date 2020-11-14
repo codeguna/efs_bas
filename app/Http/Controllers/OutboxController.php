@@ -197,9 +197,6 @@ class OutboxController extends Controller
         ->paginate(); */
         $outbox = Outbox::onlyTrashed()
         ->where('title', 'like',"%".$cari."%")
-        ->orWhere('from', 'like',"%".$cari."%")
-        ->orWhere('letter_number', 'like',"%".$cari."%")
-        ->orWhere('date', 'like',"%".$cari."%")
         ->paginate();
 
 		return view('outbox.trash',['outbox' => $outbox]);

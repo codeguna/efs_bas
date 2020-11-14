@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inbox/proceedReport','InboxController@proceedReport');
     Route::get('/inbox/printReport','InboxController@printReport');
     Route::put('/inbox/update/{id}','InboxController@update');
+    Route::get('/inbox/inboxTrashSearch','InboxController@inboxTrashSearch');
 
     Route::get('/outbox/outboxTrashSearch','OutboxController@outboxTrashSearch');
     Route::get('/outbox/create','OutboxController@create');
