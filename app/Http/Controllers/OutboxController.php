@@ -15,7 +15,7 @@ class OutboxController extends Controller
 {
     public function index(){
         
-        $outbox = Outbox::paginate(10);
+        $outbox = Outbox::orderByDesc('created_at')->paginate(10);
         return view('outbox.index',['outbox' => $outbox]);
     }
 
@@ -97,13 +97,10 @@ class OutboxController extends Controller
     }
 
     public function delete_permanent($id)
-    {        
+    {            
         $outbox = Outbox::onlyTrashed()->where('id',$id);
-        $outbox->forceDelete();   
-
-        /* $imgWillDelete = '/data_file/outbox/1605150046_381.GAK 9150.jpg';
-        File::delete($imgWillDelete); */
-
+        $outbox->forceDelete();  
+        
         return redirect('/outbox/trash');
     }
 

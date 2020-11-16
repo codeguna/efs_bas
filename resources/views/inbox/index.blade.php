@@ -26,6 +26,7 @@
 {{--           <img height="50px" width="150px" src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Collaboration_re_vyau.svg" class="center">          
  --}}        
     <h3 class="my-5">List Surat Masuk<br/><a title="Input Baru" href="{{ url('/inbox/create') }}" class="btn btn-success"><i class="ti-plus"></i></a></h4>
+        
     <h5>Cari Data Surat :</h5>
 	    <form action="{{ url('/inbox/search') }}" method="GET">
 		<input type="text" class="form-control" name="cari" placeholder=". . ." value="{{ old('cari') }}">

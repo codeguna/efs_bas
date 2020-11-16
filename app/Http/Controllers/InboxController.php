@@ -18,7 +18,7 @@ class InboxController extends Controller
 
     public function index()
     {
-        $inbox = Inbox::paginate(10);
+        $inbox = Inbox::orderByDesc('created_at')->paginate(10);
         return view('inbox.index',['inbox' => $inbox]);
     }
 
