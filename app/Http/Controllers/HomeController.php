@@ -25,10 +25,10 @@ class HomeController extends Controller
     public function index()
     {
         $outbox = DB::table('outbox')
-                    ->where('deleted_at', null)
+                    ->where('trash', null)
                     ->paginate(10);
         $inbox = DB::table('inbox')
-                    ->where('deleted_at', null)
+                    ->where('trash', null)
                     ->paginate(10);
         return view('dashboard.index')->with(compact('outbox','inbox'));
 
