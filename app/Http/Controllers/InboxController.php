@@ -97,7 +97,7 @@ class InboxController extends Controller
 
     public function trash()
     {
-        $inbox = Inbox::onlyTrashed()->get();
+        $inbox = Inbox::onlyTrashed()->orderBy('date')->get();
         return view('inbox.trash',['inbox' => $inbox]);
     }
 
@@ -145,6 +145,7 @@ class InboxController extends Controller
         ->paginate(); */
         
         $inbox = DB::table('inbox')
+                    ->orderBy('date')
                     ->whereBetween('date', [$startDate, $endDate])
                     ->get();
                    // $outbox = DB::table('outbox')->where('date', '=', '2020-11-11')->get();

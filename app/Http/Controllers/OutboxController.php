@@ -85,7 +85,7 @@ class OutboxController extends Controller
 
     public function trash()
     {
-        $outbox = Outbox::onlyTrashed()->get();
+        $outbox = Outbox::onlyTrashed()->orderBy('date')->get();
         return view('outbox.trash',['outbox' => $outbox]);
     }
 
@@ -157,6 +157,7 @@ class OutboxController extends Controller
         ->paginate(); */
         
         $outbox = DB::table('outbox')
+                    ->orderBy('date')
                     ->whereBetween('date', [$startDate, $endDate])
                     ->paginate(10);
  
@@ -176,6 +177,7 @@ class OutboxController extends Controller
         ->paginate(); */
         
         $outbox = DB::table('outbox')
+                    ->orderBy('date')
                     ->whereBetween('date', [$startDate, $endDate])
                     ->get();
                    // $outbox = DB::table('outbox')->where('date', '=', '2020-11-11')->get();

@@ -29,7 +29,7 @@
         
     <h5>Cari Data Surat :</h5>
 	    <form action="{{ url('/inbox/search') }}" method="GET">
-		<input type="text" class="form-control" name="cari" placeholder=". . ." value="{{ old('cari') }}">
+		<input type="text" class="form-control" name="cari" value="{{ old('cari') }}">
 	    </form>
         <div class="table-responsive-lg">
             <table class="table table-bordered table-striped">

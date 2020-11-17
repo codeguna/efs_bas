@@ -28,7 +28,7 @@
     <h3 class="my-5">List Surat Keluar<br/><a title="Input Baru" href="{{ url('/outbox/create') }}" class="btn btn-success"><i class="ti-plus"></i></a></h4>
     <h5>Cari Data Surat :</h5>
 	    <form action="{{ url('/outbox/search') }}" method="GET">
-		<input type="text" class="form-control" name="cari" placeholder=". . ." value="{{ old('cari') }}">
+		<input type="text" class="form-control" name="cari" value="{{ old('cari') }}">
 	    </form>
         <div class="table-responsive-lg">
             <table class="table table-bordered table-striped">
