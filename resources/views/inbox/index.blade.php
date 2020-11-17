@@ -42,7 +42,7 @@
                           <th>Judul</th>
                           <th>File</th>
                           <th>Created By</th>
-                        <th style="text-align: center" colspan="2" width="1%">OPSI</th>
+                        <th style="text-align: center" colspan="3" width="1%">OPSI</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +58,7 @@
                         <td><a href="{{ url('/data_file/inbox/'.$in->file) }}" target="_blank"><img width="150px" src="{{ url('/data_file/inbox/'.$in->file) }}"></a></td>  
                         <td>{{ $in->created_by }}</td>                    
                         <td><a class="btn btn-warning" href="{{ url('/inbox/edit') }}/{{ $in->id }}" title="Update Data ?"><i class="ti-pencil-alt"></i></a></td>
-                        <td><a class="btn btn-danger" href="{{ url('/inbox/delete') }}/{{ $in->id }}" title="Hapus Data ?"><i class="ti-trash"></a></td>
+                        <td><a class="btn btn-danger" href="{{ url('/inbox/updateTrash') }}/{{ $in->id }}" title="Hapus Data ?"><i class="ti-trash"></a></td>
                     </tr>
                     @endforeach
                 </tbody>

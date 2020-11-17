@@ -18,7 +18,10 @@ class InboxController extends Controller
 
     public function index()
     {
-        $inbox = Inbox::orderByDesc('created_at')->paginate(10);
+        $inbox = DB::table('inbox')
+                    ->orderByDesc('created_at')
+                    ->where('trash', null)
+                    ->paginate(10);
         return view('inbox.index',['inbox' => $inbox]);
     }
 
@@ -79,6 +82,14 @@ class InboxController extends Controller
 		return redirect('/inbox/list');
     }
 
+    public function updateTrash($id)
+    {       
+        $inbox = Inbox::find($id);
+            $inbox->trash = ('TRUE');
+            $inbox->save();	
+        return redirect('/inbox/list');	
+    }
+
     public function delete($id){
         $inbox = Inbox::where('id',$id)->first();
         //File::delete('data_file/'.$outbox->file);
@@ -90,25 +101,29 @@ class InboxController extends Controller
 
     public function restore($id)
     {
-        $inbox = Inbox::onlyTrashed()->where('id',$id);
-        $inbox->restore();
-        return redirect('/inbox/trash');
+        $inbox = Inbox::find($id);
+            $inbox->trash = (null);
+            $inbox->save();	
+        return redirect('/inbox/trash');	
     }
 
     public function trash()
     {
-        $inbox = Inbox::onlyTrashed()->orderBy('date')->get();
+        $inbox = DB::table('inbox')
+                    ->where('trash', 'TRUE')
+                    ->paginate(10);
         return view('inbox.trash',['inbox' => $inbox]);
     }
 
     public function delete_permanent($id)
     {        
-        $inbox = Inbox::onlyTrashed()->where('id',$id);
-        $inbox->forceDelete();        
+        $inbox = Inbox::where('id',$id)->first();
+	    File::delete('data_file/inbox/'.$inbox->file);
+ 
+	    // hapus data
+	    Inbox::where('id',$id)->delete();     
         
         return redirect('/inbox/trash');
-        $inbox = Inbox::where('id',$id)->first();
-        File::delete('data_file/inbox/'.$inbox->file);
     }
 
     public function report(){
@@ -174,18 +189,14 @@ class InboxController extends Controller
 		return view('inbox.index',['inbox' => $inbox]);
     }
 
-    public function inboxTrashSearch(Request $request)
+    /* public function inboxTrashSearch(Request $request)
     {
         $cari = $request->cari;
- 
-    		// mengambil data dari table pegawai sesuai pencarian data
-		/* $outbox = DB::table('outbox')
-		->where('title','like',"%".$cari."%")
-        ->paginate(); */
-        $inbox = Inbox::onlyTrashed()
-        ->where('title', 'like',"%".$cari."%")
-        ->paginate();
+        $inbox = DB::table('inbox')
+                    ->where('title', 'like',"%".$cari."%")
+                    ->orWhere('trash','TRUE')
+                    ->paginate(10);   
 
 		return view('inbox.trash',['inbox' => $inbox]);
-    }
+    } */
 }

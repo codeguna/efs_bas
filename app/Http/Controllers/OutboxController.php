@@ -15,7 +15,10 @@ class OutboxController extends Controller
 {
     public function index(){
         
-        $outbox = Outbox::orderByDesc('created_at')->paginate(10);
+        $outbox = DB::table('outbox')
+                    ->orderByDesc('created_at')
+                    ->where('trash', null)
+                    ->paginate(10);
         return view('outbox.index',['outbox' => $outbox]);
     }
 
@@ -85,23 +88,37 @@ class OutboxController extends Controller
 
     public function trash()
     {
-        $outbox = Outbox::onlyTrashed()->orderBy('date')->get();
+        $outbox = DB::table('outbox')
+                    ->where('trash', 'TRUE')
+                    ->paginate(10);
         return view('outbox.trash',['outbox' => $outbox]);
     }
 
     public function restore($id)
     {
-        $outbox = Outbox::onlyTrashed()->where('id',$id);
-        $outbox->restore();
-        return redirect('/outbox/trash');
+        $outbox = Outbox::find($id);
+            $outbox->trash = (null);
+            $outbox->save();	
+        return redirect('/outbox/trash');	
     }
 
     public function delete_permanent($id)
     {            
-        $outbox = Outbox::onlyTrashed()->where('id',$id);
-        $outbox->forceDelete();  
+        $outbox = Outbox::where('id',$id)->first();
+	    File::delete('data_file/outbox/'.$outbox->file);
+ 
+	    // hapus data
+	    Outbox::where('id',$id)->delete();   
         
         return redirect('/outbox/trash');
+    }
+
+    public function updateTrash($id)
+    {       
+        $outbox = Outbox::find($id);
+            $outbox->trash = ('TRUE');
+            $outbox->save();	
+        return redirect('/outbox/list');	
     }
 
     public function edit($id){
@@ -186,18 +203,14 @@ class OutboxController extends Controller
 		    return $pdf->stream();
     }
 
-    public function outboxTrashSearch(Request $request)
+    /* public function outboxTrashSearch(Request $request)
     {
-        $cari = $request->cari;
- 
-    		// mengambil data dari table pegawai sesuai pencarian data
-		/* $outbox = DB::table('outbox')
-		->where('title','like',"%".$cari."%")
-        ->paginate(); */
-        $outbox = Outbox::onlyTrashed()
-        ->where('title', 'like',"%".$cari."%")
-        ->paginate();
+        $cari = $request->cari; 
+        $outbox = DB::table('outbox')
+                    ->where('title', 'like',"%".$cari."%")
+                    ->orWhere('trash','TRUE')
+                    ->paginate(10);        
 
 		return view('outbox.trash',['outbox' => $outbox]);
-    }
+    } */
 }

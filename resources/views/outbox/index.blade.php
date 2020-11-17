@@ -57,7 +57,7 @@
                         <td><a href="{{ url('/data_file/outbox/'.$o->file) }}" target="_blank"><img width="150px" src="{{ url('/data_file/outbox/'.$o->file) }}"></a></td>  
                         <td>{{ $o->created_by }}</td>                    
                         <td><a class="btn btn-warning" href="{{ url('/outbox/edit') }}/{{ $o->id }}" title="Update Data ?"><i class="ti-pencil-alt"></i></a></td>
-                        <td><a class="btn btn-danger" href="{{ url('/outbox/delete') }}/{{ $o->id }}" title="Hapus Data ?"><i class="ti-trash"></a></td>
+                        <td><a class="btn btn-danger" href="{{ url('/outbox/updateTrash') }}/{{ $o->id }}" title="Hapus Data ?"><i class="ti-trash"></a></td>
                     </tr>
                     @endforeach
                 </tbody>
