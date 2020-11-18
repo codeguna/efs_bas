@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <label>Tanggal Surat Masuk</label>
-                    <input class="date form-control" type="text" name="date" required>
+                    <input class="date form-control" type="text" name="date" maxlength="10" required>
                     <script type="text/javascript">
                         $('.date').datepicker({  
                            format: 'yyyy-mm-dd'
@@ -40,7 +40,7 @@
                     </script> 
                     @if($errors->has('date'))
                         <div class="text-danger">
-                            Form tanggal masih belum terisi
+                            Form tanggal masih belum terisi atau format salah
                         </div>
                     @endif
                 </div> 

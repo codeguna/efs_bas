@@ -27,14 +27,14 @@
                     <input type="text" class="form-control" name="letter_number" value="{{ $inbox->letter_number }}" required>
                     @if($errors->has('letter_number'))
                     <div class="text-danger">
-                        Form Nomor Surat masih belum terisi
+                        Form Nomor Surat masih belum terisi atau format salah
                     </div>
                 @endif
                 </div>
                 
                 <div class="form-group">
                     <label>Tanggal Surat Keluar</label>
-                    <input class="date form-control" type="text" name="date" value="{{ $inbox->date }}" required>
+                    <input class="date form-control" type="text" name="date" value="{{ $inbox->date }}" maxlength="10" required>
                     <script type="text/javascript">
                         $('.date').datepicker({  
                            format: 'yyyy-mm-dd'

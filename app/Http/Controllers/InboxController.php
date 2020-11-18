@@ -27,6 +27,7 @@ class InboxController extends Controller
 
     public function store(Request $request){
         $this->validate($request, [
+            'date' => 'required|date_format:Y-m-d',
             'letter_number' => 'required|unique:inbox,letter_number',
             'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'required',
@@ -60,6 +61,7 @@ class InboxController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
+            'date' => 'required|date_format:Y-m-d',
             'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
             'title' => 'required',
         ]);

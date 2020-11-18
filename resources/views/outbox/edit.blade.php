@@ -34,7 +34,7 @@
                 
                 <div class="form-group">
                     <label>Tanggal Surat Keluar</label>
-                    <input class="date form-control" type="text" name="date" value="{{ $outbox->date }}" required>
+                    <input class="date form-control" type="text" name="date" value="{{ $outbox->date }}" maxlength="10" required>
                     <script type="text/javascript">
                         $('.date').datepicker({  
                            format: 'yyyy-mm-dd'
@@ -42,7 +42,7 @@
                     </script> 
                     @if($errors->has('date'))
                         <div class="text-danger">
-                            Form tanggal masih belum terisi
+                            Form tanggal masih belum terisi atau tanggal salah
                         </div>
                     @endif
 
