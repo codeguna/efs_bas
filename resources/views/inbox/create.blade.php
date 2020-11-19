@@ -54,11 +54,25 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label">Judul Surat Masuk</label>
+                    <label class="col-form-label">Perihal</label>
                     <input type="text" class="form-control" name="title" required>
                     @if($errors->has('title'))
                         <div class="text-danger">
-                            Form Judul Surat masih belum terisi
+                            Perihal Surat masih belum terisi
+                        </div>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Jenis Surat</label>
+                    <select name="type" class="form-control">
+                        <option value="" selected disabled hidden>-- Pilih Jenis Surat --</option>
+                            @foreach($type_mail as $t)
+                        <option value="{{ $t->type }}">{{ $t->type }}</option>
+                             @endforeach
+                    </select>                    
+                    @if($errors->has('type'))
+                        <div class="text-danger">
+                            Jenis Surat masih belum terisi
                         </div>
                     @endif
                 </div>

@@ -23,7 +23,7 @@
                 {{ method_field('PUT') }}
 
                 <div class="form-group">
-                    <label class="col-form-label">Nomor Surat Keluar</label>
+                    <label class="col-form-label">Nomor Surat Masuk</label>
                     <input type="text" class="form-control" name="letter_number" value="{{ $inbox->letter_number }}" required>
                     @if($errors->has('letter_number'))
                     <div class="text-danger">
@@ -33,7 +33,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Tanggal Surat Keluar</label>
+                    <label>Tanggal Surat Masuk</label>
                     <input class="date form-control" type="text" name="date" value="{{ $inbox->date }}" maxlength="10" required>
                     <script type="text/javascript">
                         $('.date').datepicker({  
@@ -48,7 +48,7 @@
 
                 </div> 
                 <div class="form-group">
-                    <label class="col-form-label" required>Surat Keluar Dari ?</label>
+                    <label class="col-form-label" required>Surat Masuk Dari ?</label>
                     <input type="text" class="form-control" name="from" value="{{ $inbox->from }}" required>
                     @if($errors->has('from'))
                         <div class="text-danger">
@@ -57,11 +57,25 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label">Judul Surat Keluar</label>
+                    <label class="col-form-label">Perihal</label>
                     <input type="text" class="form-control" name="title" value="{{ $inbox->title }}" required>
                     @if($errors->has('title'))
                         <div class="text-danger">
-                            Form Judul Surat masih belum terisi
+                            Perihal surat masih belum terisi
+                        </div>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Jenis Surat</label>
+                    <select name="type" class="form-control">
+                        <option value="{{ $inbox->type }}" selected disabled hidden>{{ $inbox->type }}</option>
+                            @foreach($type_mail as $t)
+                        <option value="{{ $t->type }}">{{ $t->type }}</option>
+                             @endforeach
+                    </select>                    
+                    @if($errors->has('type'))
+                        <div class="text-danger">
+                            Jenis Surat masih belum terisi
                         </div>
                     @endif
                 </div>

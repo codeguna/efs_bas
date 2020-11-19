@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Inbox;
 use File;
-use DataTables;
+use App\Mail_type;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,11 +13,12 @@ class InboxController extends Controller
 {
     public function create()
     {
-        return view('inbox.create');
-    }
+        $type_mail = Mail_type::all();
+        return view('inbox.create')->with(compact('type_mail'));    }
 
     public function index()
     {
+
         $inbox = DB::table('inbox')
                     ->orderByDesc('created_at')
                     ->where('trash', null)
@@ -31,6 +32,8 @@ class InboxController extends Controller
             'letter_number' => 'required|unique:inbox,letter_number',
             'file' => 'required|file|mimes:pdf,jpeg,png,jpg|max:10240',
             'title' => 'required',
+            'type' => 'required',
+
         ]);
 
         // menyimpan data file yang diupload ke variabel $files
@@ -47,6 +50,7 @@ class InboxController extends Controller
             'date' => $request->date,
             'from' => $request->from,
             'title' => $request->title,
+            'type' => $request->type,
             'created_by' => $request->created_by,
 		]);
  
@@ -54,8 +58,9 @@ class InboxController extends Controller
     }
 
     public function edit($id){
+        $type_mail = Mail_type::all();
         $inbox = Inbox::find($id);
-        return view('inbox.edit',['inbox'=>$inbox]);
+        return view('inbox.edit')->with(compact('inbox','type_mail'));
     }
 
     public function update($id, Request $request)
@@ -64,6 +69,8 @@ class InboxController extends Controller
             'date' => 'required|date_format:Y-m-d',
             'file' => 'required|file|mimes:pdf,jpeg,png,jpg|max:10240',
             'title' => 'required',
+            'type' => 'required',
+
         ]);
 
         // menyimpan data file yang diupload ke variabel $files
@@ -79,6 +86,7 @@ class InboxController extends Controller
             $inbox->date = $request->date;
             $inbox->from = $request->from;
             $inbox->title = $request->title;
+            $inbox->type = $request->type;
             $inbox->file = $nama_file;
             $inbox->save();		
 		return redirect('/inbox/list');
@@ -182,11 +190,13 @@ class InboxController extends Controller
         ->paginate(); */
         
         $inbox = DB::table('inbox')
+                    ->orderByDesc('created_at')
                     ->where('title', 'like',"%".$cari."%")
                     ->orWhere('from', 'like',"%".$cari."%")
                     ->orWhere('letter_number', 'like',"%".$cari."%")
                     ->orWhere('date', 'like',"%".$cari."%")
-                    ->paginate();
+                    ->orWhere('type', 'like',"%".$cari."%")
+                    ->paginate(10);
  
     		// mengirim data pegawai ke view index
 		return view('inbox.index',['inbox' => $inbox]);

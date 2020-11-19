@@ -19,7 +19,8 @@
                         <th>Nomor Surat</th>
                         <th>Tanggal Surat</th>
                         <th>Surat Dari</th>
-                        <th>Judul</th>
+                        <th>Perihal</th>
+                        <th>Jenis Surat</th>
                         <th>Created By</th>
                     </tr>
                 </thead>
@@ -32,6 +33,7 @@
                         <td>{{ $o->date }}</td>
                         <td>{{ $o->from }}</td>
                         <td>{{ $o->title }}</td> 
+                        <td>{{ $o->type }}</td> 
                         <td>{{ $o->created_by }}</td>                    
                     </tr>
                     @endforeach

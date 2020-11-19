@@ -35,7 +35,8 @@
                         <th>Nomor Surat</th>
                           <th>Tanggal Surat</th>
                           <th>Surat Dari</th>
-                          <th>Judul</th>
+                          <th>Perihal</th>
+                          <th>Jenis Surat</th>
                           <th>File</th>
                           <th>Created By</th>                          
                         <th style="text-align: center" colspan="2" width="1%">OPSI</th>
@@ -49,6 +50,7 @@
                           <td>{{ $i->date }}</td>
                           <td>{{ $i->from }}</td>
                           <td>{{ $i->title }}</td>
+                          <td>{{ $i->type }}</td>
                         <td><img width="100px" src="{{ url('/data_file/inbox/'.$i->file) }}"></td>   
                         <td>{{ $i->created_by }}</td>                   
                         <td><a href="{{ url('/inbox/restore') }}/{{ $i->id }}" class="btn btn-success btn-sm" title="Restore Data"><i class="ti-import"></i></a></td>
