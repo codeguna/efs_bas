@@ -68,6 +68,14 @@
                                     <li><a href="{{ url('/outbox/trash') }}"><i class="ti-trash"></i><span>Trash</span></a></li> 
                                 </ul>
                             </li>
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-server"></i><span>
+                                    Data Master
+                                    </span></a>
+                                <ul class="collapse">
+                                    <li><a href="{{ url('/mail_type/list') }}"><i class="ti-write"></i><span>Jenis Surat</span></a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>

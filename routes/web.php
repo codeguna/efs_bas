@@ -59,6 +59,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/upload/proses', 'UploadController@proses_upload');
     Route::get('/upload/hapus/{id}','UploadController@hapus');
 
+    Route::get('/mail_type/list','MailTypeController@index');
+    Route::post('/mail_type/store', 'MailTypeController@store');
+    Route::get('/mail_type/search','MailTypeController@search');
+    Route::get('/mail_type/delete/{id}','MailTypeController@delete');
+
+
 });
 
 

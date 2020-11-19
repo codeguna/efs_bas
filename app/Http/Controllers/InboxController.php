@@ -29,7 +29,7 @@ class InboxController extends Controller
         $this->validate($request, [
             'date' => 'required|date_format:Y-m-d',
             'letter_number' => 'required|unique:inbox,letter_number',
-            'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+            'file' => 'required|file|mimes:pdf,jpeg,png,jpg|max:10240',
             'title' => 'required',
         ]);
 
@@ -62,7 +62,7 @@ class InboxController extends Controller
     {
         $this->validate($request, [
             'date' => 'required|date_format:Y-m-d',
-            'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+            'file' => 'required|file|mimes:pdf,jpeg,png,jpg|max:10240',
             'title' => 'required',
         ]);
 
@@ -142,7 +142,8 @@ class InboxController extends Controller
 		->where('title','like',"%".$cari."%")
         ->paginate(); */
         
-        $inbox = DB::table('inbox')
+        $inbox = DB::table('inbox')        
+                    ->orderBy('date')
                     ->whereBetween('date', [$startDate, $endDate])
                     ->paginate(10);
  
