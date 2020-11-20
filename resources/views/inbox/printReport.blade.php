@@ -11,35 +11,38 @@
 <body>
     <div class="container">
         <h1>BAS LPKIA - Report Inbox</h1>
-        <div class="table-responsive-lg">
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Nomor Surat</th>
-                        <th>Tanggal Surat</th>
-                        <th>Surat Dari</th>
-                        <th>Perihal</th>
-                        <th>Jenis Surat</th>
-                        <th>Created By</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php $i=1 @endphp
-                    @foreach($inbox as $o)                                  
-                    <tr>  
-                        <td>{{ $i++ }}</td>                      
-                        <td>{{ $o->letter_number }}</td>
-                        <td>{{ $o->date }}</td>
-                        <td>{{ $o->from }}</td>
-                        <td>{{ $o->title }}</td> 
-                        <td>{{ $o->type }}</td> 
-                        <td>{{ $o->created_by }}</td>                    
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        <div class="card">
+            <div class="table-responsive-lg">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nomor Surat</th>
+                            <th>Tanggal Surat</th>
+                            <th>Surat Dari</th>
+                            <th>Perihal</th>
+                            <th>Jenis Surat</th>
+                            <th>Created By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php $i=1 @endphp
+                        @foreach($inbox as $o)                                  
+                        <tr>  
+                            <td>{{ $i++ }}</td>                      
+                            <td>{{ $o->letter_number }}</td>
+                            <td>{{ $o->date }}</td>
+                            <td>{{ $o->from }}</td>
+                            <td>{{ $o->title }}</td> 
+                            <td>{{ $o->type }}</td> 
+                            <td>{{ $o->created_by }}</td>                    
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
+        
     </div>
 </body>
 </html>

@@ -48,7 +48,7 @@
 
                 </div> 
                 <div class="form-group">
-                    <label class="col-form-label" required>Surat Keluar Untuk ?</label>
+                    <label class="col-form-label" required>Surat Untuk ?</label>
                     <input type="text" class="form-control" name="from" value="{{ $outbox->from }}" required>
                     @if($errors->has('from'))
                     <div class="text-danger">
@@ -58,13 +58,28 @@
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-form-label">Judul Surat Keluar</label>
+                    <label class="col-form-label">Perihal</label>
                     <input type="text" class="form-control" name="title" value="{{ $outbox->title }}" required>
                     @if($errors->has('title'))
                     <div class="text-danger">
                         Form Judul Surat masih belum terisi
                     </div>
                 @endif
+                </div>
+
+                <div class="form-group">
+                    <label class="col-form-label">Jenis Surat</label>
+                    <select name="type" class="form-control">
+                        <option value="{{ $outbox->type }}" selected disabled hidden>{{ $outbox->type }}</option>
+                            @foreach($type_mail as $t)
+                        <option value="{{ $t->type }}">{{ $t->type }}</option>
+                             @endforeach
+                    </select>                    
+                    @if($errors->has('type'))
+                        <div class="text-danger">
+                            Jenis Surat masih belum terisi
+                        </div>
+                    @endif
                 </div>
                    
                 <div class="form-group">

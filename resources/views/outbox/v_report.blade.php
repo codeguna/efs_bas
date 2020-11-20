@@ -38,7 +38,8 @@
                         <th>Nomor Surat</th>
                           <th>Tanggal Surat</th>
                           <th>Surat Untuk</th>
-                          <th>Judul</th>
+                          <th>Perihal</th>
+                          <th>Jenis Surat</th>
                           <th>File</th>
                           <th>Created By</th>
                     </tr>
@@ -51,6 +52,7 @@
                           <td>{{ $o->date }}</td>
                           <td>{{ $o->from }}</td>
                           <td>{{ $o->title }}</td>
+                          <td>{{ $o->type }}</td>
                         <td><a href="{{ url('/data_file/outbox/'.$o->file) }}" target="_blank"><img width="150px" src="{{ url('/data_file/outbox/'.$o->file) }}"></a></td>  
                         <td>{{ $o->created_by }}</td>                    
                     </tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Outbox;
+use App\Mail_type;
 use File;
 use DataTables;
 use PDF;
@@ -23,7 +24,9 @@ class OutboxController extends Controller
     }
 
     public function create(){
-        return view('outbox.create');
+
+        $type_mail = Mail_type::all();
+        return view('outbox.create')->with(compact('type_mail'));
     }
 
     public function store(Request $request){
@@ -32,6 +35,7 @@ class OutboxController extends Controller
             'letter_number' => 'required|unique:outbox,letter_number',
             'file' => 'required|file|mimes:pdf,jpeg,png,jpg|max:10240',
             'title' => 'required',
+            'type' => 'required',
         ]);
 
         // menyimpan data file yang diupload ke variabel $files
@@ -48,6 +52,7 @@ class OutboxController extends Controller
             'date' => $request->date,
             'from' => $request->from,
             'title' => $request->title,
+            'type' => $request->type,
             'created_by' => $request->created_by,
 		]);
  
@@ -68,7 +73,8 @@ class OutboxController extends Controller
                     ->orWhere('from', 'like',"%".$cari."%")
                     ->orWhere('letter_number', 'like',"%".$cari."%")
                     ->orWhere('date', 'like',"%".$cari."%")
-                    ->paginate();
+                    ->orWhere('type', 'like',"%".$cari."%")
+                    ->paginate(10);
  
     		// mengirim data pegawai ke view index
 		return view('outbox.index',['outbox' => $outbox]);
@@ -123,8 +129,9 @@ class OutboxController extends Controller
     }
 
     public function edit($id){
+        $type_mail = Mail_type::all();
         $outbox = Outbox::find($id);
-        return view('outbox.edit',['outbox'=>$outbox]);
+        return view('outbox.edit')->with(compact('outbox','type_mail'));
     }
 
     public function update($id, Request $request)
@@ -133,6 +140,8 @@ class OutboxController extends Controller
             'date' => 'required|date_format:Y-m-d',
             'file' => 'required|file|mimes:pdf,jpeg,png,jpg|max:10240',
             'title' => 'required',
+            'type' => 'required',
+
         ]);
 
         // menyimpan data file yang diupload ke variabel $files
@@ -148,6 +157,7 @@ class OutboxController extends Controller
             $outbox->date = $request->date;
             $outbox->from = $request->from;
             $outbox->title = $request->title;
+            $outbox->type = $request->type;
             $outbox->file = $nama_file;
             $outbox->save();		
 		return redirect('/outbox/list');

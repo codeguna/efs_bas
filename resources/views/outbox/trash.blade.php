@@ -35,7 +35,8 @@
                         <th>Nomor Surat</th>
                           <th>Tanggal Surat</th>
                           <th>Surat Untuk</th>
-                          <th>Judul</th>
+                          <th>Perihal</th>
+                          <th>Jenis Surat</th>
                           <th>File</th>
                           <th>Created By</th>                          
                         <th style="text-align: center" colspan="2" width="1%">OPSI</th>
@@ -49,6 +50,7 @@
                           <td>{{ $o->date }}</td>
                           <td>{{ $o->from }}</td>
                           <td>{{ $o->title }}</td>
+                          <td>{{ $o->type }}</td>
                         <td><img width="100px" src="{{ url('/data_file/outbox/'.$o->file) }}"></td>   
                         <td>{{ $o->created_by }}</td>                   
                         <td><a href="{{ url('/outbox/restore') }}/{{ $o->id }}" class="btn btn-success btn-sm" title="Restore Data"><i class="ti-import"></i></a></td>
@@ -58,7 +60,7 @@
                 </tbody>
             </table>
           </div>
-      </div>
   </div>
+</div>
 
 @endsection
