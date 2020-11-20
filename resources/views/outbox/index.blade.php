@@ -25,7 +25,7 @@
       <div class="card-body">
 {{--           <img height="50px" width="150px" src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/Collaboration_re_vyau.svg" class="center">          
  --}}        
-    <h3 class="my-5">List Surat Keluar<br/><a title="Input Baru" href="{{ url('/outbox/create') }}" class="btn btn-success"><i class="ti-plus"></i></a></h4>
+    <h3 class="my-5">List Surat Keluar<br/><a title="Input Baru" href="{{ url('/outbox/create') }}" class="btn btn-success"><i class="ti-plus"></i></a></h3>
     <h5>Cari Data Surat :</h5>
 	    <form action="{{ url('/outbox/search') }}" method="GET">
 		<input type="text" class="form-control" name="cari" value="{{ old('cari') }}">
@@ -65,5 +65,8 @@
                 </tbody>
             </table>
             {{ $outbox->links("pagination::bootstrap-4") }}
-            
+        </div>
+      </div>
+  </div>
+</div>
 @endsection

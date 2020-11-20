@@ -92,5 +92,9 @@
                 </tbody>
             </table>
             {{ $mail_type->links("pagination::bootstrap-4") }}
-            
+        </div>
+      </div>
+  </div>
+</div>
+
 @endsection

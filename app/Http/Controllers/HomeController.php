@@ -24,13 +24,24 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $year = date('Y');
         $outbox = DB::table('outbox')
                     ->where('trash', null)
+                    ->whereBetween('created_at', [$year.'-01-01', $year.'-12-31'])
                     ->paginate(10);
         $inbox = DB::table('inbox')
                     ->where('trash', null)
+                    ->whereBetween('created_at', [$year.'-01-01', $year.'-12-31'])
                     ->paginate(10);
-        return view('dashboard.index')->with(compact('outbox','inbox'));
+        $outboxTrash = DB::table('outbox')
+                    ->where('trash', 'TRUE')
+                    ->whereBetween('created_at', [$year.'-01-01', $year.'-12-31'])
+                    ->paginate(10);
+        $inboxTrash = DB::table('inbox')
+                    ->where('trash', 'TRUE')
+                    ->whereBetween('created_at', [$year.'-01-01', $year.'-12-31'])
+                    ->paginate(10);
+        return view('dashboard.index')->with(compact('outbox','inbox','inboxTrash','outboxTrash'));
 
     }
 }
