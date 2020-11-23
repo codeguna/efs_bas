@@ -54,7 +54,7 @@
                 <div class="card-body">
                   <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
                   <script src="{{ asset('/js/canvasjs.min.js') }}"></script>
-                 </div>
+                 </div>                 
             </div>
              
 @endsection

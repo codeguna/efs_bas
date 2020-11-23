@@ -70,7 +70,7 @@
                 <div class="form-group">
                     <label class="col-form-label">Jenis Surat</label>
                     <select name="type" class="form-control">
-                        <option value="{{ $outbox->type }}" selected disabled hidden>{{ $outbox->type }}</option>
+                        <option value="{{ $outbox->type }}" selected>{{ $outbox->type }}</option>
                             @foreach($type_mail as $t)
                         <option value="{{ $t->type }}">{{ $t->type }}</option>
                              @endforeach
