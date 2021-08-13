@@ -18,7 +18,7 @@ class OutboxController extends Controller
         
         $outbox = DB::table('outbox')
                     ->orderByDesc('created_at')
-                    ->where('trash', null)
+                    ->where('trash', 'FALSE')
                     ->paginate(10);
         return view('outbox.index',['outbox' => $outbox]);
     }

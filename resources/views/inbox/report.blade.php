@@ -36,7 +36,7 @@
 
                 </div> 
                 <div class="form-group">
-                    <label>Tanggal Awal</label>
+                    <label>Tanggal Akhir</label>
                     <input class="date form-control" type="text" name="endDate" required>
                     <script type="text/javascript">
                         $('.date').datepicker({  

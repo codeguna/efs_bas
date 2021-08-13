@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Inbox;
+use App\Outbox;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,23 +27,19 @@ class HomeController extends Controller
     public function index()
     {
         $year = date('Y');
-        $outbox = DB::table('outbox')
-                    ->where('trash', null)
+        $outboxCount = Outbox::where('trash', 'FALSE')        
                     ->whereBetween('created_at', [$year.'-01-01', $year.'-12-31'])
-                    ->paginate(10);
-        $inbox = DB::table('inbox')
-                    ->where('trash', null)
+                    ->count();
+        $inbox = Inbox::where('trash', 'FALSE')        
+                ->whereBetween('created_at', [$year.'-01-01', $year.'-12-31'])
+                ->count();
+        $outboxTrash = Outbox::where('trash', 'TRUE')        
                     ->whereBetween('created_at', [$year.'-01-01', $year.'-12-31'])
-                    ->paginate(10);
-        $outboxTrash = DB::table('outbox')
-                    ->where('trash', 'TRUE')
+                    ->count();
+        $inboxTrash = Inbox::where('trash', 'TRUE')        
                     ->whereBetween('created_at', [$year.'-01-01', $year.'-12-31'])
-                    ->paginate(10);
-        $inboxTrash = DB::table('inbox')
-                    ->where('trash', 'TRUE')
-                    ->whereBetween('created_at', [$year.'-01-01', $year.'-12-31'])
-                    ->paginate(10);
-        return view('dashboard.index')->with(compact('outbox','inbox','inboxTrash','outboxTrash'));
+                    ->count();
+        return view('dashboard.index')->with(compact('inbox','inboxTrash','outboxTrash','outboxCount'));
 
     }
 }

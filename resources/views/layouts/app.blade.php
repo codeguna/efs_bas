@@ -6,20 +6,20 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     @yield('title')
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('/public/theme/images/icon/favicon.png') }}">
-    <link rel="stylesheet" href="{{ asset('/public/theme/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/public/theme/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/public/theme/css/themify-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('/public/theme/css/metisMenu.css') }}">
-    <link rel="stylesheet" href="{{ asset('/public/theme/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/public/theme/css/slicknav.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/public/theme/css/typography.css') }}">
-    <link rel="stylesheet" href="{{ asset('/public/theme/css/default-css.css') }}">
-    <link rel="stylesheet" href="{{ asset('/public/theme/css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('/public/theme/css/responsive.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('/theme/images/icon/favicon.png') }}">
+    <link rel="stylesheet" href="{{ asset('/theme/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/theme/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/theme/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('/theme/css/metisMenu.css') }}">
+    <link rel="stylesheet" href="{{ asset('/theme/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/theme/css/slicknav.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/theme/css/typography.css') }}">
+    <link rel="stylesheet" href="{{ asset('/theme/css/default-css.css') }}">
+    <link rel="stylesheet" href="{{ asset('/theme/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('/theme/css/responsive.css') }}">
 
     <!-- modernizr css -->
-    <script src="{{ asset('/public/theme/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/vendor/modernizr-2.8.3.min.js') }}"></script>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="{{ url('/home') }}"><img src="{{ asset('/public/theme/images/icon/logo.png') }}" alt="logo"></a>
+                    <a href="{{ url('/home') }}"><img src="{{ asset('/theme/images/icon/logo.png') }}" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -52,7 +52,7 @@
                                     <li><a href="{{ url('/inbox/create') }}"><i class="ti-pencil"></i><span>Input Surat Masuk</span></a></li>   
                                     <li><a href="{{ url('/inbox/list') }}"><i class="ti-menu-alt"></i><span>Daftar Surat Masuk</span></a></li>                                   
                                     <li><a href="{{ url('/inbox/report') }}"><i class="ti-folder"></i><span>Report Surat Masuk</span></a></li> 
-                                    <li><a href="{{ url('/inbox/trash') }}"><i class="ti-trash"></i><span>Trash</span></a></li>  
+                                    <li><a href="{{ url('/inbox/trash') }}"><i class="ti-trash"></i><span>Inbox Trash</span></a></li>  
                                 </ul>
                             </li>
                             <li>
@@ -63,7 +63,7 @@
                                     <li><a href="{{ url('/outbox/create') }}"><i class="ti-pencil"></i><span>Input Surat Keluar</span></a></li>   
                                     <li><a href="{{ url('/outbox/list') }}"><i class="ti-menu-alt"></i><span>Daftar Surat Keluar</span></a></li> 
                                     <li><a href="{{ url('/outbox/report') }}"><i class="ti-folder"></i><span>Report Surat Keluar</span></a></li> 
-                                    <li><a href="{{ url('/outbox/trash') }}"><i class="ti-trash"></i><span>Trash</span></a></li> 
+                                    <li><a href="{{ url('/outbox/trash') }}"><i class="ti-trash"></i><span>Outbox Trash</span></a></li> 
                                 </ul>
                             </li>
                             <li>
@@ -122,7 +122,7 @@
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="{{ asset('/public/theme/images/author/avatar.png') }}" alt="avatar">
+                            <img class="avatar user-thumb" src="{{ asset('/theme/images/author/avatar.png') }}" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"> {{ Auth::user()->name }} <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">                                
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -145,28 +145,28 @@
         </div>
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2020. All right reserved <a href="http://www.linkedin.com/in/gunadhip/">MIS LPKIA</a>.</p>
+                <p>© Copyright {{ date('Y') }}. All right reserved <a href="http://www.linkedin.com/in/gunadhip/">MIS LPKIA</a>.</p>
             </div>
         </footer>
         <!-- footer area end-->
     </div>
     <!-- page container area end -->   
     <!-- jquery latest version -->
-    <script src="{{ asset('/public/theme/js/vendor/jquery-2.2.4.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/vendor/jquery-2.2.4.min.js') }}"></script>
     <!-- bootstrap 4 js -->
-    <script src="{{ asset('/public/theme/js/popper.min.js') }}"></script>
-    <script src="{{ asset('/public/theme/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('/public/theme/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('/public/theme/js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/popper.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/metisMenu.min.js') }}"></script>
     <script src="{{ asset('public/theme/js/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ asset('/public/theme/js/jquery.slicknav.min.js') }}"></script>
+    <script src="{{ asset('/theme/js/jquery.slicknav.min.js') }}"></script>
     <!-- all line chart activation -->
-    <script src="{{ asset('/public/theme/js/line-chart.js') }}"></script>  
-    <script src="{{ asset('/public/theme/js/bar-chart.js') }}"></script>  
+    <script src="{{ asset('/theme/js/line-chart.js') }}"></script>  
+    <script src="{{ asset('/theme/js/bar-chart.js') }}"></script>  
 
     <!-- others plugins -->
-    <script src="{{ asset('/public/theme/js/plugins.js') }}"></script>
-    <script src="{{ asset('/public/theme/js/scripts.js') }}"></script>
+    <script src="{{ asset('/theme/js/plugins.js') }}"></script>
+    <script src="{{ asset('/theme/js/scripts.js') }}"></script>
 </body>
 
 </html>

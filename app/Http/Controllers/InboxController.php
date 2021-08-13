@@ -21,7 +21,7 @@ class InboxController extends Controller
 
         $inbox = DB::table('inbox')
                     ->orderByDesc('created_at')
-                    ->where('trash', null)
+                    ->where('trash', 'FALSE')
                     ->paginate(10);
         return view('inbox.index',['inbox' => $inbox]);
     }

@@ -19,10 +19,10 @@
       indexLabel: "{label} - #percent%",
       toolTipContent: "<b>{label}:</b> {y} (#percent%)",
       dataPoints: [
-        { y: {{ $inbox->total() }}, label: "Surat Masuk" },
-        { y: {{ $outbox->total() }}, label: "Surat Keluar" },
-        { y: {{ $outboxTrash->total() }}, label: "Sampah Surat Keluar" },
-        { y: {{ $inboxTrash->total() }}, label: "Sampah Surat Masuk" }
+        { y: {{ $inbox }}, label: "Surat Masuk" },
+        { y: {{ $outboxCount }}, label: "Surat Keluar" },
+        { y: {{ $outboxTrash }}, label: "Outbox Trash" },
+        { y: {{ $inboxTrash }}, label: "Inbox Trash" }
       ]
     }]
   });
@@ -36,7 +36,7 @@
             <div class="seo-fact sbg2">
               <div class="p-4 d-flex justify-content-between align-items-center">
                   <div class="seofct-icon"><i class="ti-arrow-down"></i>Surat Masuk</div>
-                  <h2>{{ $inbox->total() }} </h2>
+                  <h2>{{ $inbox }} </h2>
               </div>
             </a>
             </div>
@@ -45,7 +45,7 @@
             <div class="seo-fact sbg1">
               <div class="p-4 d-flex justify-content-between align-items-center">
                   <div class="seofct-icon"><i class="ti-arrow-up"></i>Surat Keluar</div>
-                  <h2>{{ $outbox->total() }} </h2>
+                  <h2>{{ $outboxCount }} </h2>
               </div>
             </a>
             </div> 
